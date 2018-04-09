@@ -1,0 +1,40 @@
+library("dplyr")          ## load
+
+#The first argument to this function is the data frame (mydata), and the subsequent arguments are the columns to keep.
+select(mydata, V1, V2, V3, V4, V5, V6, V7, V8)
+
+#To choose rows, use filter():
+filter(mydata, V1 == "0")
+
+#But what if you wanted to select and filter? There are three ways to do this: use intermediate steps, nested functions, or pipes.
+#Pipes let you take the output of one function and send it directly to the next, which is useful when you need to many things to the same data set. Pipes in R look like %>% and are made available via the magrittr package installed as part of  dplyr.
+
+mydata %>%
+  filter(V1 == "0") %>%
+  select(V2, V3, V8)
+
+#If we wanted to create a new object with this smaller version of the data we could do so by assigning it a new name:
+
+meta_citplus <- mydata %>%
+  filter(V1 == "0") %>%
+  select(V2, V3, V8)
+
+meta_citplus
+
+#Many data analysis tasks can be approached using the “split-apply-combine” paradigm: split the data into groups, apply some analysis to each group, and then combine the results. dplyr makes this very easy through the use of the group_by() function, which splits the data into groups. When the data is grouped in this way summarize() can be used to collapse each group into a single-row summary. summarize() does this by applying an aggregating or summary function to each group.
+
+mydata %>%
+  group_by(cit) %>%
+  summarize(n())
+  
+#When dealing with simple statistics like the mean, the easiest way to ignore NA (the missing data) is to use na.rm=TRUE (rm stands for remove). 
+
+mydata %>%
+  group_by(V1) %>%
+  summarize(mean_size = mean(V8, na.rm = TRUE)) 
+  
+filter(mydata, V1 < 29)
+filter(mydata, V3 == "0")
+filter(mydata, V8 %in% c("1", "0"))  
+
+unique(mydata$V1)
