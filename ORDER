@@ -1,0 +1,12 @@
+str(mydata) #Get Structure
+
+attach(mydata) # Skip mydata$prefix
+
+Xrange<-range(V1);Xrange
+
+Yrange<-range(V1);Yrange
+
+library(sqldf)
+V2<-sqldf("SELECT" * FROM mydata where V2 = '1'")
+V2<-sqldf("SELECT * FROM mydata where V2 = '1'")
+cor(V2$V1, V2$V3)
