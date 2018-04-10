@@ -1,6 +1,10 @@
 # Returns the first or last parts of a vector, matrix, table, data frame or function.
 head(mydata) 
-tail(mydata) 
+tail(mydata)
+
+ summary(mydata) # media/median
+
+dim(mydata) #dimensions, or shape
 
 str(mydata) #Get Structure
 
@@ -50,3 +54,9 @@ V2<-sqldf("SELECT" * FROM mydata where V2 = '1'")
 V2<-sqldf("SELECT * FROM mydata where V2 = '1'")
 
 cor(V2$V1, V2$V3)
+
+names(mydata)
+mydata$V1
+class(mydata$V1)
+class(mydata$V1)
+mydata$V2[mydata$V2 == "0"] <- "NA"
