@@ -60,3 +60,17 @@ mydata$V1
 class(mydata$V1)
 class(mydata$V1)
 mydata$V2[mydata$V2 == "0"] <- "NA"
+
+#And you'll get several more statistics from the data including standard deviation, "mad" (mean absolute deviation), skew (measuring whether or not the data distribution is symmetrical) and kurtosis (whether the data have a sharp or flatter peak near its mean).
+
+library(psych)
+describe(mydata)
+
+cor(mydata)
+
+#To choose only certain columns, you use the select() function with syntax such as select(dataframename, columnName1, columnName2). No 
+
+table(mydata$V1, mytable$V2) % how many are of each factor
+
+
+
